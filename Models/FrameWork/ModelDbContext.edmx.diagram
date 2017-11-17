@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1980cab43cca4af3b0897a77d932885c" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Account" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DISCTRICT_TABLE" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FEATURE_TABLE" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KhachHang" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROJECT_FEATURE_TABLE" Width="1.5" PointX="7.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROJECT_STATUS_TABLE" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROJECT_TABLE" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PROJECT_TYPE_TABLE" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.STREET_TABLE" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USER_TABLE" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.WARD_TABLE" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_PROJECT_TABLE_DISCTRICT_TABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_STREET_TABLE_DISCTRICT_TABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_WARD_TABLE_DISCTRICT_TABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PROJECT_FEATURE_TABLE_FEATURE_TABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PROJECT_FEATURE_TABLE_PROJECT_TABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PROJECT_TABLE_PROJECT_STATUS_TABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PROJECT_TABLE_PROJECT_TYPE_TABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PROJECT_TABLE_STREET_TABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PROJECT_TABLE_USER_TABLE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PROJECT_TABLE_WARD_TABLE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
