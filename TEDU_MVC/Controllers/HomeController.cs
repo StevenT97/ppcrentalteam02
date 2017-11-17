@@ -11,6 +11,7 @@ namespace TEDU_MVC.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            // check for commit
             return View();
         }
     }
