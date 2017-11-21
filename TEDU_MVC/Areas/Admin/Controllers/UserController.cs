@@ -23,7 +23,7 @@ namespace TEDU_MVC.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(USER_TABLE user)
+        public ActionResult Create(USER user)
         {
 
             if (ModelState.IsValid)

@@ -1,4 +1,4 @@
-﻿@model Models.FrameWork.PROJECT_TYPE_TABLE
+﻿@model Models.FrameWork.PROPERTY_TYPE
 
 @{
     ViewBag.Title = "Create";
@@ -23,10 +23,10 @@
                             @Html.ValidationSummary(true)
                             <div class="form-group" id="inputError">
 
-                                <label> @Html.LabelFor(model => model.TypeName)</label>
+                                <label> @Html.LabelFor(model => model.CodeType)</label>
 
-                                @Html.TextBoxFor(model => model.TypeName, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.TypeName, null, new { @class = "text-danger" })
+                                @Html.TextBoxFor(model => model.CodeType, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CodeType, null, new { @class = "text-danger" })
 
                             </div>
 

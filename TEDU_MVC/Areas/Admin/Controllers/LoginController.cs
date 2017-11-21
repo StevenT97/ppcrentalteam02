@@ -34,9 +34,9 @@ namespace TEDU_MVC.Areas.Admin.Controllers
                     var user = account.GetID(model.UserName);
                     var userSession = new UserSession();
                     userSession.UserName = user.Email;
-                    userSession.UserID = user.id;
+                    userSession.UserID = user.ID;
                     Session.Add(CommonConstant.USER_SESSION, userSession);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Property");
                 }
                 else if(result == -1)
                 {

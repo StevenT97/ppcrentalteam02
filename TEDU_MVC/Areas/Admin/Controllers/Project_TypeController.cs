@@ -33,7 +33,7 @@ namespace TEDU_MVC.Areas.Admin.Controllers
         // POST: Admin/Project_TypeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PROJECT_TYPE_TABLE collection)
+        public ActionResult Create(PROPERTY_TYPE collection)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace TEDU_MVC.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     var model = new Project_TypeModel();
-                    int res = model.Create(collection.TypeName, collection.Status);
+                    int res = model.Create(collection.CodeType, collection.Status);
                     if (res > 0)
                     {
                         return RedirectToAction("Index");

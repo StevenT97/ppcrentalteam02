@@ -10,16 +10,16 @@ namespace Models
 {
     public class Project_TypeModel
     {
-        private PPC_RentalEntities context = null;
+        private DemoPPCRentalEntities context = null;
         public Project_TypeModel()
         {
-            context = new PPC_RentalEntities();
+            context = new DemoPPCRentalEntities();
         }
-        public List<PROJECT_TYPE_TABLE> ListAll() {
-            var list = context.Database.SqlQuery<PROJECT_TYPE_TABLE>("Sp_Project_Type_ListAll").ToList();
+        public List<PROPERTY_TYPE> ListAll() {
+            var list = context.Database.SqlQuery<PROPERTY_TYPE>("Sp_Project_Type_ListAll").ToList();
             return list;
         }
-        public int Create(string name, bool status)
+        public int Create(string name, bool? status)
         {
             object[] parameters =
                 {

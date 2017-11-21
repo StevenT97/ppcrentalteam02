@@ -1,4 +1,4 @@
-﻿@model Models.FrameWork.USER_TABLE
+﻿@model Models.FrameWork.USER
 
 @{
     ViewBag.Title = "Create";
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>USER_TABLE</h4>
+        <h4>USER</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

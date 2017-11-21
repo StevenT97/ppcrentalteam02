@@ -31,13 +31,13 @@ namespace TEDU_MVC.Areas.Admin.Controllers
 
         // POST: Admin/_USER/Create
         [HttpPost]
-        public ActionResult Create(USER_TABLE collection)
+        public ActionResult Create(USER collection)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var db = new PPC_RentalEntities();
+                    var db = new DemoPPCRentalEntities();
 
                     var encryptedMd5Pas = MaHoa.MD5Hash(collection.Password);
                     collection.Password = encryptedMd5Pas;

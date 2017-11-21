@@ -1,4 +1,4 @@
-﻿@model List<Models.FrameWork.PROJECT_TYPE_TABLE>
+﻿@model List<Models.FrameWork.PROPERTY_TYPE>
 
 @{
     ViewBag.Title = "Index";
@@ -34,8 +34,8 @@
 
 
                         <tr class="odd gradeX">
-                            <td>@item.id</td>
-                            <td>@item.TypeName</td>
+                            <td>@item.ID</td>
+                            <td>@item.CodeType</td>
                             <td>@(item.Status.Equals(true)?"Active":"Blocked")</td>
                         </tr>
                         }
