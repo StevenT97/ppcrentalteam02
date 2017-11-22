@@ -23,11 +23,39 @@ namespace TEDU_MVC.Areas.Admin.Controllers
 
            
         }
+        [HttpPost]
 
+        public ActionResult Upload(List<HttpPostedFileBase> files)
+        {
+            var path = "";
+            foreach (var item in files)
+            {
+                if (item != null)
+                {
+                    if (item.ContentLength > 0)
+                    {
+                        if (Path.GetExtension(item.FileName).ToLower()==".jpg"
+                            || Path.GetExtension(item.FileName).ToLower()==".png"
+                            || Path.GetExtension(item.FileName).ToLower()==".gif"
+                            || Path.GetExtension(item.FileName).ToLower()==".jpeg")
+                       {
+                            path = Path.Combine(Server.MapPath("~/MultiImages/"), item.FileName);
+                            item.SaveAs(path);
+                            ViewBag.UploadSuccess = true;
+
+                        }
+                    }
+                }
+            }
+            return View();
+        }
         // GET: Admin/Property/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var pro = model.PROPERTies.Find(id);
+            ViewBag.Images = Directory.EnumerateFiles(Server.MapPath("~/MultiImages"))
+                             .Select(fn => "~/MultiImages/" + Path.GetFileName(fn));
+            return View(pro);
         }
 
         // GET: Admin/Property/Create
@@ -40,9 +68,11 @@ namespace TEDU_MVC.Areas.Admin.Controllers
 
         // POST: Admin/Property/Create
         [HttpPost]
-        public ActionResult Create(PROPERTy property)
+        public ActionResult Create(PROPERTy property, List<HttpPostedFileBase> files)
         {
             ListAll();
+           
+
             try
             {
                 // Images
@@ -80,6 +110,32 @@ namespace TEDU_MVC.Areas.Admin.Controllers
                 {
                     var model = new AccountModel();
                     long id = model.InsertProperty(property);
+
+                    // SavemultiImage ----------------------------
+                    var path = "";
+                    foreach (var item in files)
+                    {
+                        if (item != null)
+                        {
+                            if (item.ContentLength > 0)
+                            {
+                                if (Path.GetExtension(item.FileName).ToLower() == ".jpg"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".png"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".gif"
+                                    || Path.GetExtension(item.FileName).ToLower() == ".jpeg")
+                                {
+                                    var path0 = id + item.FileName;
+                                    path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
+
+                                    item.SaveAs(path);
+                                    ViewBag.UploadSuccess = true;
+
+                                }
+                            }
+                        }
+                    }
+                    // End SaveMultiImage -------------------------
+
                     if (id > 0)
                     {
                         return RedirectToAction("Index", "Property");
