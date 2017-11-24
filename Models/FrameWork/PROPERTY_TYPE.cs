@@ -21,17 +21,15 @@ namespace Models.FrameWork
         {
             this.PROPERTies = new HashSet<PROPERTy>();
         }
-
     
         public int ID { get; set; }
-        // Doi ten hien thi tren trinh duyet
         [DisplayName("Loại Project")]
         // Truong yeu cau bat buoc nhap
         [Required(ErrorMessage = "Bạn chưa nhập loại Project")]
         [StringLength(50, ErrorMessage = "Số kí tự tối đa là 50")]
         public string CodeType { get; set; }
         public string Description { get; set; }
-        public bool? Status { get; set; }
+        public Nullable<bool> Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PROPERTy> PROPERTies { get; set; }

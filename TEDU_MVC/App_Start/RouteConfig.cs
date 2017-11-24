@@ -18,8 +18,9 @@ namespace TEDU_MVC
             routes.MapRoute(
     "Default",
     "{controller}/{action}/{id}",
-    new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-   
+   defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+      namespaces: new[] { "TEDU_MVC.Controllers" }
+
 );
             routes.MapRoute(
         name: "Login",

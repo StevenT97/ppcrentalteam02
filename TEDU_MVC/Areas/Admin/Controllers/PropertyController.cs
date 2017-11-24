@@ -15,13 +15,13 @@ namespace TEDU_MVC.Areas.Admin.Controllers
         // GET: Admin/Property
         List<SelectListItem> propertytype;
         DemoPPCRentalEntities model = new DemoPPCRentalEntities();
-        public ActionResult Index(int page=1, int pageSize = 5)
+        public ActionResult Index(int page = 1, int pageSize = 5)
         {
             var propertymodel = new AccountModel();
-            var model = propertymodel.ListAllPaging(page,pageSize);
+            var model = propertymodel.ListAllPaging(page, pageSize);
             return View(model);
 
-           
+
         }
         [HttpPost]
 
@@ -34,14 +34,15 @@ namespace TEDU_MVC.Areas.Admin.Controllers
                 {
                     if (item.ContentLength > 0)
                     {
-                        if (Path.GetExtension(item.FileName).ToLower()==".jpg"
-                            || Path.GetExtension(item.FileName).ToLower()==".png"
-                            || Path.GetExtension(item.FileName).ToLower()==".gif"
-                            || Path.GetExtension(item.FileName).ToLower()==".jpeg")
-                       {
+                        if (Path.GetExtension(item.FileName).ToLower() == ".jpg"
+                            || Path.GetExtension(item.FileName).ToLower() == ".png"
+                            || Path.GetExtension(item.FileName).ToLower() == ".gif"
+                            || Path.GetExtension(item.FileName).ToLower() == ".jpeg")
+                        {
                             path = Path.Combine(Server.MapPath("~/MultiImages/"), item.FileName);
                             item.SaveAs(path);
-                            ViewBag.UploadSuccess = true;
+                            path.Clone();
+                            //ViewBag.UploadSuccess = true;
 
                         }
                     }
@@ -61,7 +62,7 @@ namespace TEDU_MVC.Areas.Admin.Controllers
         // GET: Admin/Property/Create
         public ActionResult Create()
         {
-           
+
             ListAll();
             return View();
         }
@@ -71,40 +72,35 @@ namespace TEDU_MVC.Areas.Admin.Controllers
         public ActionResult Create(PROPERTy property, List<HttpPostedFileBase> files)
         {
             ListAll();
-           
-
+          
             try
             {
+
+                // Xu ly Avatar
+
+                string filename2 = Path.GetFileNameWithoutExtension(property.ImageFile2.FileName);
+                string extension2 = Path.GetExtension(property.ImageFile2.FileName);
+                filename2 = filename2 + DateTime.Now.ToString("yymmssfff") + extension2;
+                property.Avatar = filename2;
+                filename2 = Path.Combine(Server.MapPath("~/Avatar"), filename2);
+                property.ImageFile2.SaveAs(filename2);
+
+
+
                 // Images
+
                 string filename = Path.GetFileNameWithoutExtension(property.ImageFile.FileName);
                 string extension = Path.GetExtension(property.ImageFile.FileName);
                 filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-                property.Images = "~/Images/" + filename;
+                property.Images = filename;
                 filename = Path.Combine(Server.MapPath("~/Images"), filename);
-                // Avatar
-                //string filename2 = Path.GetFileNameWithoutExtension(property.ImageFile2.FileName);
-                //string extension2 = Path.GetExtension(property.ImageFile2.FileName);
-                //filename2 = filename2 + "Avatar" + DateTime.Now.ToString("yymmssfff") + extension2;
-                //property.Avatar = "~/Images/" + filename2;
-                //filename2 = Path.Combine(Server.MapPath("~/Images"), filename2);
-                // Save
-                //property.ImageFile2.SaveAs(filename2);
-                //property.ImageFile.SaveAs(filename);
+                property.ImageFile.SaveAs(filename);
+
+
+
+
 
                 property.Created_at = DateTime.Parse(DateTime.Now.ToShortDateString());
-                if (Path.GetFileNameWithoutExtension(property.ImageFile.FileName) == null)
-                {
-                    string s2 = "~/Images/ImagesNull.png";
-                    property.ImageFile.SaveAs(s2);
-                    //property.ImageFile2.SaveAs(filename2);
-                }
-                else
-                {
-                    //property.ImageFile2.SaveAs(filename2);
-                    property.ImageFile.SaveAs(filename);
-                }
-
-
 
                 if (ModelState.IsValid)
                 {
@@ -172,7 +168,7 @@ namespace TEDU_MVC.Areas.Admin.Controllers
 
                 }
             }
-           
+
 
             return View();
         }
@@ -194,39 +190,29 @@ namespace TEDU_MVC.Areas.Admin.Controllers
             // Images
             try
             {
+                //// Xu ly Avatar
+
+                string filename2 = Path.GetFileNameWithoutExtension(property.ImageFile2.FileName);
+                string extension2 = Path.GetExtension(property.ImageFile2.FileName);
+                filename2 = filename2 + DateTime.Now.ToString("yymmssfff") + extension2;
+                property.Avatar = filename2;
+                filename2 = Path.Combine(Server.MapPath("~/Avatar"), filename2);
+                property.ImageFile2.SaveAs(filename2);
+
+
+
+                // Xu ly Images
 
                 string filename = Path.GetFileNameWithoutExtension(property.ImageFile.FileName);
                 string extension = Path.GetExtension(property.ImageFile.FileName);
                 filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-                property.Images = "~/Images/" + filename;
+                property.Images = filename;
                 filename = Path.Combine(Server.MapPath("~/Images"), filename);
-                // Avatar
-                //string filename2 = Path.GetFileNameWithoutExtension(property.ImageFile2.FileName);
-                //string extension2 = Path.GetExtension(property.ImageFile2.FileName);
-                //filename2 = filename2 + "Avatar" + DateTime.Now.ToString("yymmssfff") + extension2;
-                //property.Avatar = "~/Images/" + filename2;
-                //filename2 = Path.Combine(Server.MapPath("~/Images"), filename2);
-                // Save
-              
-                //if (Path.GetFileNameWithoutExtension(property.ImageFile2.FileName)==null)
-                //{
-                //    string s1 = "~/ Images / AvatarNull.png";
-                //    property.ImageFile2.SaveAs(s1);
-                //    property.ImageFile.SaveAs(filename);
-                //}
-                 if (Path.GetFileNameWithoutExtension(property.ImageFile.FileName)==null)
-                {
-                    string s2="~/Images/ImagesNull.png";
-                    property.ImageFile.SaveAs(s2);
-                    //property.ImageFile2.SaveAs(filename2);
-                }
-                else
-                {
-                    //property.ImageFile2.SaveAs(filename2);
-                    property.ImageFile.SaveAs(filename);
-                }
-               
-              
+                property.ImageFile.SaveAs(filename);
+
+                // End Xu ly Images
+
+
 
                 // TODO: Add insert logic here
                 if (ModelState.IsValid)
@@ -248,7 +234,7 @@ namespace TEDU_MVC.Areas.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    
+
                     var model = new AccountModel();
                     var res = model.Update(property);
                     if (res)
@@ -261,10 +247,10 @@ namespace TEDU_MVC.Areas.Admin.Controllers
                     }
                 }
             }
-            
-                return View("Index");
-            
-           // return View("Index");
+
+            return View("Index");
+
+            // return View("Index");
         }
 
         // GET: Admin/Property/Delete/5
@@ -280,17 +266,17 @@ namespace TEDU_MVC.Areas.Admin.Controllers
         {
             new AccountModel().Delete(id);
 
-           // return View("Index");
+            // return View("Index");
             return RedirectToAction("Index", "Property");
-            
+
             //return View();
 
         }
-       
+
         public void ListAll()
         {
             ViewBag.property_type = model.PROPERTY_TYPE.ToList();
-            ViewBag.street = model.STREETs.OrderBy(x=>x.StreetName).ToList();
+            ViewBag.street = model.STREETs.OrderBy(x => x.StreetName).ToList();
             ViewBag.ward = model.WARDs.OrderBy(x => x.WardName).ToList();
             ViewBag.district = model.DISTRICT_Table.OrderBy(x => x.DistrictName).ToList();
             ViewBag.user = model.USERs.OrderBy(x => x.FullName).ToList();

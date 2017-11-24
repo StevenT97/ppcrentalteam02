@@ -34,5 +34,8 @@ namespace Models.FrameWork
         public virtual DbSet<STREET> STREETs { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
         public virtual DbSet<WARD> WARDs { get; set; }
+        public virtual DbSet<Credential> Credentials { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<UserGroup> UserGroups { get; set; }
     }
 }

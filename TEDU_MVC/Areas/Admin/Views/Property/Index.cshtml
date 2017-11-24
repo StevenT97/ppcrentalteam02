@@ -23,6 +23,7 @@
                         <tr>
                             <th></th>
                             <th>PropertyName</th>
+                            <th>Avatar</th>
                             <th>Images</th>
                             <th>PropertyType</th>
                             @*<th>Content</th>*@
@@ -30,11 +31,11 @@
                             <th>Ward</th>
                             <th>District</th>
                             <th>Price</th>
-                            <th>UnitPrice</th>
+                            @*<th>UnitPrice</th>*@
                             <th>Area</th>
-                            <th>BedRoom</th>
-                            <th>BathRoom</th>
-                            <th>PackingPlace</th>
+                            @*<th>BedRoom</th>
+                                <th>BathRoom</th>
+                                <th>PackingPlace</th>*@
                             <th>User</th>
                             <th>Created</th>
                             <th>Create_post</th>
@@ -57,49 +58,28 @@
                                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                                     @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                                     @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
-                                    @Ajax.ActionLink("Delete","Delete",new { id=item.ID}, new AjaxOptions
+                                    @Ajax.ActionLink("Delete", "Delete", new { id = item.ID }, new AjaxOptions
                                {
-                                   Confirm="Ban co muon xoa dong nay ?",OnComplete="$('#row_"+item.ID+"'.remove())",
-                                   HttpMethod ="Delete",
+                                   Confirm = "Ban co muon xoa dong nay ?",
+                                   OnComplete = "$('#row_" + item.ID + "'.remove())",
+                                   HttpMethod = "Delete",
                                })
                                 </td>
                                 <td>@item.PropertyName</td>
-                                @*<td><img src="/Images/@item.Images" width="100px"></td>*@
 
-                                @{
+                                <td><img src="/Avatar/@item.Avatar" width="100px"></td>
+                                <td><img src="/Images/@item.Images" width="100px"></td>
 
-                                    try
-                                    {
-                                        @*if (item.Images == null)
-                                        {
-                                            <td><img src="~/Images/ImagesNull.png" width="100px"></td>
-                                        }
-                                        else
-                                        {*@
-                                            <td><img src="@Url.Content(item.Images)" width="100px"></td>
-                                        //}
-                                        //}
-                                        //else
-                                        //{
-                                        // <td><img src="/Images/@item.Images" width="100px"></td>
-                                        //}
-
-                                    }
-                                    catch (Exception ex)
-                                    {
-
-                                    }
-                                }
                                 <td>@item.PROPERTY_TYPE.CodeType</td>
                                 <td>@item.STREET.StreetName</td>
                                 <td>@item.WARD.WardName</td>
                                 <td>@item.DISTRICT_Table.DistrictName</td>
                                 <td>@item.Price</td>
-                                <td>@item.UnitPrice</td>
+                                @*<td>@item.UnitPrice</td>*@
                                 <td>@item.Area</td>
-                                <td>@item.BedRoom</td>
-                                <td>@item.BathRoom</td>
-                                <td>@item.PackingPlace</td>
+                                @*<td>@item.BedRoom</td>
+                                    <td>@item.BathRoom</td>
+                                    <td>@item.PackingPlace</td>*@
                                 <td>@item.USER.FullName</td>
                                 <td>@item.Created_at</td>
                                 <td>@item.Create_post</td>
@@ -108,7 +88,7 @@
                                 <td>@item.Updated_at</td>
                                 @*<td>@item.Sale_ID</td>*@
                             </tr>
-                                    }
+                        }
 
                     </tbody>
                 </table>
@@ -122,4 +102,3 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
-

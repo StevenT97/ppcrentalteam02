@@ -8,7 +8,7 @@ using Models.FrameWork;
 
 namespace TEDU_MVC.Areas.Admin.Controllers
 {
-    public class Project_TypeController : Controller
+    public class Project_TypeController : BaseController
     {
         // GET: Admin/Project_TypeController
         public ActionResult Index()

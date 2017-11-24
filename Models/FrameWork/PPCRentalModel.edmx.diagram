@@ -25,6 +25,9 @@
         <AssociationConnector Association="DemoPPCRentalModel.FK_PROPERTY_USER" ManuallyRouted="false" />
         <AssociationConnector Association="DemoPPCRentalModel.FK_PROPERTY_USER1" ManuallyRouted="false" />
         <AssociationConnector Association="DemoPPCRentalModel.FK_PROPERTY_WARD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DemoPPCRentalModel.Credential" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DemoPPCRentalModel.Role" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DemoPPCRentalModel.UserGroup" Width="1.5" PointX="4.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

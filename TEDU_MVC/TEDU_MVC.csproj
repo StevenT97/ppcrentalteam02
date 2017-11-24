@@ -233,15 +233,28 @@
     <Content Include="Assets\vendor\morrisjs\morris.min.js" />
     <Content Include="Assets\vendor\raphael\raphael.js" />
     <Content Include="Assets\vendor\raphael\raphael.min.js" />
+    <Content Include="Avatar\AvatarNull.png" />
+    <Content Include="Avatar\ImagesNull.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GiaoDienChinh\BootStrap\bootstrap.css" />
+    <Content Include="GiaoDienChinh\CSS Layout\style.css" />
+    <Content Include="GiaoDienChinh\ImagesSlider\slider1.jpg" />
+    <Content Include="GiaoDienChinh\ImagesSlider\slider2.jpg" />
+    <Content Include="GiaoDienChinh\ImagesSlider\slider3.jpg" />
+    <Content Include="GiaoDienChinh\NguoiDungLayout\JavaScript.js" />
+    <Content Include="GiaoDienChinh\NguoiDungLayout\jquery.flexslider.js" />
+    <Content Include="GiaoDienChinh\NguoiDungLayout\jquery.min.js" />
+    <Content Include="GiaoDienChinh\NguoiDungLayout\modernizr.js" />
+    <Content Include="GiaoDienChinh\Nivo _lider\jquery.nivo.slider.js" />
+    <Content Include="GiaoDienChinh\Nivo _lider\jquery.nivo.slider.pack.js" />
+    <Content Include="GiaoDienChinh\Nivo _lider\nivo-slider.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\AvatarNull.png" />
     <Content Include="Images\ImagesNull.png" />
-    <Content Include="Images\IMG_1592-stamp.jpg" />
     <Content Include="Images\PIS3280-Edit-stamp.jpg" />
     <Content Include="Images\PIS3611.jpg" />
     <Content Include="Images\PIS_4622-Edit.jpg" />
@@ -329,7 +342,6 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -358,11 +370,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Layout\_LayoutPage1.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

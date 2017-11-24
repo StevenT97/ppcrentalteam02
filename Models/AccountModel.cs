@@ -9,6 +9,7 @@ using PagedList;
 using System.IO;
 using System.Web;
 
+
 namespace Models
 {
    public class AccountModel
@@ -29,12 +30,14 @@ namespace Models
         {
             if (entity.ImageFile == null)
             {
-                entity.Images = "~/Images/ImagesNull.png";
+                entity.Images = "ImagesNull.png";
             }
-            //else if(entity.ImageFile2==null)
-            //{
-            //    entity.Avatar = "~/Images/AvatarNull.png";
-            //}
+            if (entity.ImageFile2 == null)
+            {
+                entity.Avatar = "AvatarNull.png";
+               
+            }
+
 
             db.PROPERTies.Add(entity);
             db.SaveChanges();
@@ -66,15 +69,27 @@ namespace Models
                 var property = db.PROPERTies.Find(entitys.ID);
 
                 property.PropertyName = entitys.PropertyName;
-                if (entitys.ImageFile==null)
+               // save images
+                if (entitys.ImageFile == null)
                 {
-
+                    //entitys.Images = "ImagesNull.png";
                 }
                 else
                 {
                     property.Images = entitys.Images;
                 }
-               
+                // save avatar
+                if (entitys.ImageFile2 == null)
+                {
+                    //entitys.Avatar = "AvatarNull.png";
+                }
+                else
+                {
+                    property.Avatar = entitys.Avatar;
+                }
+
+                //property.Avatar = entitys.Avatar;
+                //property.Images = entitys.Images;
                 property.PropertyType_ID = entitys.PropertyType_ID;
                 property.Content = entitys.Content;
                 property.Street_ID = entitys.Street_ID;
