@@ -56,5 +56,6 @@ namespace Models.FrameWork
 
         public HttpPostedFileBase ImageFile { get; set; }
         public HttpPostedFileBase ImageFile2 { get; set; }
+
     }
 }

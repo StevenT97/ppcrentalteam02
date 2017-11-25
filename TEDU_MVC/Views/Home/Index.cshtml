@@ -52,31 +52,16 @@
 
 
                         </h3>
+                       
                         <a href="#"><img src="~/Images/@item.Avatar" alt="" /></a>
-                        @*<p class="top">
-                                @{
-                                    try
-                                    {
-                                        if (@item.Content.Length <= 100)
-                                        {
-                                        @item.Content
-                                        }
-                                        else if (@item.Content == null)
-                                        {
+                        <p>Area: @item.Area | Price:@item.Price</p>
+                        <p>Address: @item.DISTRICT_Table.DistrictName, @item.WARD.WardName, @item.STREET.StreetName</p>
+                        <div class="icon-bar">
+                            <img src="~/GiaoDienChinh/Icon/Bed.png" />(@item.BedRoom)|
+                            <img src="~/GiaoDienChinh/Icon/Nhaxe.png" />(@item.PackingPlace)|
+                            <img src="~/GiaoDienChinh/Icon/Bathroom.png" />(@item.BathRoom)
 
-                                        }
-                                        else
-                                        {
-                                        @item.Content.Substring(0, 101)
-                                        }
-                                    }
-                                    catch(NullReferenceException)
-                                    {
-
-                                    }
-
-                                }
-                            </p>*@
+                        </div>
                         <div class="btn"><a href="#">read more</a></div>
                     </div>
 
