@@ -256,6 +256,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GiaoDienChinh\BootStrap\bootstrap.css" />
     <Content Include="GiaoDienChinh\CSS Layout\style.css" />
+    <Content Include="GiaoDienChinh\Icon\readmore.png" />
     <Content Include="GiaoDienChinh\Icon\shawer-orange.png" />
     <Content Include="GiaoDienChinh\Icon\bed-organe.png" />
     <Content Include="GiaoDienChinh\Icon\cars-organe.png" />
