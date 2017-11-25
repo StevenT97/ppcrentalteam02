@@ -256,12 +256,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="GiaoDienChinh\BootStrap\bootstrap.css" />
     <Content Include="GiaoDienChinh\CSS Layout\style.css" />
-    <Content Include="GiaoDienChinh\Icon\Sale.png" />
-    <Content Include="GiaoDienChinh\Icon\Bed.png" />
-    <Content Include="GiaoDienChinh\Icon\Bathroom.png" />
-    <Content Include="GiaoDienChinh\Icon\24008471_842262019313580_1360974219_n.png" />
-    <Content Include="GiaoDienChinh\Icon\24008714_842262032646912_2032415499_n.png" />
-    <Content Include="GiaoDienChinh\Icon\Nhaxe.png" />
+    <Content Include="GiaoDienChinh\Icon\shawer-orange.png" />
+    <Content Include="GiaoDienChinh\Icon\bed-organe.png" />
+    <Content Include="GiaoDienChinh\Icon\cars-organe.png" />
     <Content Include="GiaoDienChinh\ImagesSlider\slider1.jpg" />
     <Content Include="GiaoDienChinh\ImagesSlider\slider2.jpg" />
     <Content Include="GiaoDienChinh\ImagesSlider\slider3.jpg" />
