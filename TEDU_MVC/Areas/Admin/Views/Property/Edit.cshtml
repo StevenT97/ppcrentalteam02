@@ -24,6 +24,13 @@
                 @Html.ValidationMessageFor(model => model.PropertyName, "", new { @class = "text-danger" })
             </div>
 </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Upload File Details</label>
+            @*@Html.LabelFor(model => model.Images, htmlAttributes: new { @})*@
+            <div class="col-md-10">
+                <input multiple type="file" name="files" value="Browse" />
+            </div>
+        </div>
 
         <div class="form-group">
             <lable> @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" }) </lable>
@@ -44,7 +51,8 @@
         </div>
 
         <div class="form-group">
-            <lable> @Html.LabelFor(model => model.PropertyType_ID, "PropertyType_ID", htmlAttributes: new { @class = "control-label col-md-2" }) </lable>
+            <label class = "control-label col-md-2">PropertyType</label>
+            @*<lable> @Html.LabelFor(model => model.PropertyType_ID, "PropertyType_ID", htmlAttributes: new { @class = "control-label col-md-2" }) </lable>*@
             <div class="col-md-10">
                 @Html.DropDownList("PropertyType_ID", new SelectList(ViewBag.property_type, "ID","CodeType"), htmlAttributes: new { @class = "form-control" })
                 @*@Html.ValidationMessageFor(model => model.PropertyType_ID, "", new { @class = "text-danger" })*@

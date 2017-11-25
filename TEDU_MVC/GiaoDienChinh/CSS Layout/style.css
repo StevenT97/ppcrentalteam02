@@ -286,6 +286,7 @@ html[xmlns] .slides {display: block;}
 .images_1_of_3 {
 	width: 28.2%;
 	padding:1.5%; 
+    margin-left: 4.5%;
 }
 .images_1_of_3  img,.images_3_of_1 img ,.images_1_of_4 img ,.det-pic img{
 	-webkit-border-radius:4px;

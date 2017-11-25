@@ -184,12 +184,48 @@ namespace TEDU_MVC.Areas.Admin.Controllers
 
         // POST: Admin/Property/Edit/5
         [HttpPost]
-        public ActionResult Edit(PROPERTy property)
+        public ActionResult Edit(PROPERTy property, List<HttpPostedFileBase> files)
         {
             ListAll();
             // Images
             try
             {
+                ViewBag.Images = Directory.EnumerateFiles(Server.MapPath("~/MultiImages"))
+                   .Select(fn => "~/MultiImages/" + Path.GetFileName(fn));
+                foreach (var image in (IEnumerable<string>)ViewBag.Images)
+                {
+
+                    if (image.Contains(property.ID.ToString()))
+                    {
+                        System.IO.File.Delete(image);
+
+                    }
+
+                }
+                // Xu ly MultiImage
+                var path = "";
+                foreach (var item in files)
+                {
+                    if (item != null)
+                    {
+                        if (item.ContentLength > 0)
+                        {
+                            if (Path.GetExtension(item.FileName).ToLower() == ".jpg"
+                                || Path.GetExtension(item.FileName).ToLower() == ".png"
+                                || Path.GetExtension(item.FileName).ToLower() == ".gif"
+                                || Path.GetExtension(item.FileName).ToLower() == ".jpeg")
+                            {
+                                var path0 =property.ID + item.FileName;
+                                path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
+
+                                item.SaveAs(path);
+                                ViewBag.UploadSuccess = true;
+
+                            }
+                        }
+                    }
+                }
+
                 //// Xu ly Avatar
 
                 string filename2 = Path.GetFileNameWithoutExtension(property.ImageFile2.FileName);
