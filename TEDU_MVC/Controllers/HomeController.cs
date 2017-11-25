@@ -16,18 +16,23 @@ namespace TEDU_MVC.Controllers
         List<SelectListItem> myList, myList2, propertytype, street;
         DemoPPCRentalEntities db = new DemoPPCRentalEntities();
         // GET: Home
-        public ActionResult Index(int page = 1, int pageSize = 5)
+        public ActionResult Index(int page = 1, int pageSize = 6)
         {
             ListAll();
             var propertymodel = new AccountModel();
             var model = propertymodel.ListAllPaging(page, pageSize);
             return View(model);
         }
- 
+        public ActionResult Details(int id)
+        {
+            db = new DemoPPCRentalEntities();
+            var product = db.PROPERTies.FirstOrDefault(x => x.ID == id);
+            return View(product);
+        }
         public JsonResult GetStreet(int did)
         {
             var db = new DemoPPCRentalEntities();
-            var streets = db.STREETs.Where(s => s.DISTRICT_Table.ID == did);
+            var streets = db.STREETs.Where(s => s.District_ID == did);
             return Json(streets.Select(s => new
             {
                 id = s.ID,
