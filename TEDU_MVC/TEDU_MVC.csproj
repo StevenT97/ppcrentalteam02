@@ -359,6 +359,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\Login\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\ListAgency.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Details.cshtml" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="scripts\jquery-3.2.1.js" />
     <Content Include="scripts\jquery-3.2.1.min.js" />
