@@ -32,7 +32,7 @@ namespace TEDU_MVC.Controllers
         public JsonResult GetStreet(int did)
         {
             var db = new DemoPPCRentalEntities();
-            var streets = db.STREETs.Where(s => s.District_ID== did);
+            var streets = db.STREETs.Where(s => s.DISTRICT_Table.ID == did);
             return Json(streets.Select(s => new
             {
                 id = s.ID,
@@ -41,16 +41,34 @@ namespace TEDU_MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Search(string _area, string text, string _district, string _propertytype)
+        public ActionResult Search(string text, int? Duong, int? Quan, int? Types)
         {
+            var pro = db.PROPERTies.AsQueryable();
             ListAll();
-            //    var product = model.PROPERTies.ToList().Where(x => (x.PropertyName.Contains(text) && x.Area.Contains(_area) && x.DISTRICT_Table.DistrictName.Contains(_district)));
-            var pro = (from a in db.PROPERTies
-                       where ((a.PropertyName.Contains(text) && a.Area.Contains(_area) && a.DISTRICT_Table.DistrictName.Contains(_district) && a.PROPERTY_TYPE.CodeType.Contains(_propertytype)))
-
-                       select a);
+            
+            if (!(String.IsNullOrEmpty(text)) || !(String.IsNullOrWhiteSpace(text)))
+            {
+                pro = pro.Where(x => x.PropertyName.Contains(text));
+            }
+            if (Duong != null)
+            {
+                pro = pro.Where(x => x.Street_ID == Duong);
+            }
+            if (Quan != null)
+            {
+                pro = pro.Where(x => x.District_ID == Quan);
+            }
+            if (Types != null)
+            {
+                pro = pro.Where(x => x.PropertyType_ID == Types);
+            }
+            if ((String.IsNullOrEmpty(text)) && Duong == null && Quan == null && Types ==null)
+            {
+                pro = db.PROPERTies.AsQueryable();
+            }
 
             return View(pro);
+
         }
 
         public void ListAll()

@@ -11,7 +11,7 @@
             <PropertyRef Name="RoleID" />
           </Key>
           <Property Name="UserGroupID" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="RoleID" Type="varbinary" MaxLength="50" Nullable="false" />
+          <Property Name="RoleID" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="DISTRICT_Table">
           <Key>
@@ -109,6 +109,7 @@
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="Role" Type="nvarchar" MaxLength="30" />
           <Property Name="Status" Type="bit" />
+          <Property Name="GroupID" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserGroup">
           <Key>
@@ -429,6 +430,7 @@
           <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="PROPERTies" Relationship="Self.FK_PROPERTY_USER" FromRole="USER" ToRole="PROPERTies" />
           <NavigationProperty Name="PROPERTies1" Relationship="Self.FK_PROPERTY_USER1" FromRole="USER" ToRole="PROPERTies" />
+          <Property Name="GroupID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="WARD">
           <Key>
@@ -637,7 +639,7 @@
             <PropertyRef Name="RoleID" />
           </Key>
           <Property Name="UserGroupID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RoleID" Type="Binary" Nullable="false" MaxLength="50" FixedLength="false" />
+          <Property Name="RoleID" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -746,6 +748,7 @@
           <EntitySetMapping Name="USERs">
             <EntityTypeMapping TypeName="DemoPPCRentalModel.USER">
               <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

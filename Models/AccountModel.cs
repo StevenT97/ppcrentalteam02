@@ -8,12 +8,17 @@ using Models.FrameWork;
 using PagedList;
 using System.IO;
 using System.Web;
+using System.Data.Common;
+using System.Configuration;
+
+
 
 
 namespace Models
 {
    public class AccountModel
     {
+      
         // PPC_RentalEntities db = null;
         DemoPPCRentalEntities db = null;
         public AccountModel()
@@ -36,6 +41,14 @@ namespace Models
             {
                 entity.Avatar = "AvatarNull.png";
                
+            }
+            if (entity.District_ID ==null)
+            {
+                entity.District_ID = null ;
+            }
+            if (entity.Status_ID == null)
+            {
+                entity.District_ID = null;
             }
 
 
@@ -124,38 +137,99 @@ namespace Models
         {
             return db.PROPERTies.OrderByDescending(x=> x.Created_at).ToPagedList(page, pageSize);
         }
-
+        public IEnumerable<USER> ListAllPagingUser(int page, int pageSize)
+        {
+            return db.USERs.OrderByDescending(x => x.FullName).ToPagedList(page, pageSize);
+        }
+        //public IEnumerable<PROPERTy> ListAllAgency(int page, int pageSize)
+        //{
+        //    return db.PROPERTies.Where(x=>x.UserID==id).ToPagedList(page, pageSize);
+        //}
         public USER GetID(string userName)
         {
             return db.USERs.SingleOrDefault(x => x.Email == userName);
 
         }
-        public int Login(string userName, string passWord)
+        public List<string> GetListCredentials(string userName)
+        {
+            var user = db.USERs.Single(x => x.Email == userName);
+
+            var data = (from a in db.Credentials
+                       join b in db.UserGroups on a.UserGroupID equals b.ID
+                       join c in db.Roles on a.RoleID equals c.ID
+                       where b.ID ==user.GroupID
+                       select new 
+                       {
+                          RoleID = a.RoleID,
+                          UserGroupID = a.UserGroupID
+                       }).AsEnumerable().Select(x=> new Credential() {
+                           RoleID = x.RoleID,
+                           UserGroupID = x.UserGroupID
+                       });
+            return data.Select(x => x.RoleID).ToList();
+            
+        }
+      
+        public int Login(string userName, string passWord, bool isLoginAdmin = false)
         {
 
-           // sing or find
+            // sing or find
             var res = db.USERs.SingleOrDefault(x => x.Email == userName);
 
-            if (res == null )
+            if (res == null)
             {
                 return 0;
             }
             else
             {
-                if (res.Status == false)
+                if (isLoginAdmin == true)
                 {
-                    return -1;
+                    if (res.GroupID.Equals(CommonConstants.SALE_GROUP) || res.GroupID == CommonConstants.AGENCY_GROUP)
+                    {
+                        if (res.Status == false)
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            if (res.Password == passWord)
+                           
+                                
+                                return 1;
+                          
+
+                            else
+                                return -2;
+
+                        }
+                    }
+                    else
+                    {
+                        return -3;
+                    }
                 }
                 else
                 {
-                    if (res.Password == passWord)
-                        return 1;
+                    if (res.Status == false)
+                    {
+                        return -1;
+                    }
                     else
-                        return -2;
+                    {
+                        if (res.Password == passWord)
+                            return 1;
+                        else
+                            return -2;
 
+                    }
                 }
+
+
             }
-          
+
+
+
+
         }
     }
 }

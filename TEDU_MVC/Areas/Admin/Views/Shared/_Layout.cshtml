@@ -12,9 +12,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
     <!-- Bootstrap Core CSS -->
     @*<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">*@
     <link href="~/Assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="~/Assets/Admin/js/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/Admin/js/plugins/ckeditor/styles.js"></script>
     <!-- MetisMenu CSS -->
     @*<link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">*@
     <link href="~/Assets/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" />
@@ -33,6 +37,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -292,12 +297,17 @@
     <script src="../dist/js/sb-admin-2.js"></script>*@
     <script src="~/Assets/vendor/jquery/jquery.min.js"></script>
     <script src="~/Assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="~/Assets/Admin/js/plugins/ckeditor/ckeditor.js"></script>
+    <script src="~/Assets/Admin/js/plugins/ckeditor/styles.js"></script>
     <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Assets/vendor/metisMenu/metisMenu.min.js"></script>
     <script src="~/Assets/vendor/raphael/raphael.min.js"></script>
     <script src="~/Assets/vendor/morrisjs/morris.min.js"></script>
     <script src="~/Assets/Admin/data/morris-data.js"></script>
     <script src="~/Assets/Admin/dist/js/sb-admin-2.js"></script>
-
+    <script src="//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
+    @RenderSection("scripts",false)
 </body>
 </html>

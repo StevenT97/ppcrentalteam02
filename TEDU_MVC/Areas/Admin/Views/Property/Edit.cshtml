@@ -44,6 +44,7 @@
         <div class="form-group">
             <lable> @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" }) </lable>
             <div class="col-md-10">
+               @*<img src="/~Images/@Model.Images"/>*@
                <input type="file" name="ImageFile"  />
                 @*@Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })*@
@@ -76,14 +77,14 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             <lable> @Html.LabelFor(model => model.Ward_ID, "Ward_ID", htmlAttributes: new { @class = "control-label col-md-2" }) </lable>
             <div class="col-md-10">
-                @*@Html.DropDownList("Ward", null, htmlAttributes: new { @class = "form-control" })*@
-                @Html.DropDownList("Ward_ID", new SelectList(ViewBag.ward, "ID", "WardName"), htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Ward_ID, "", new { @class = "text-danger" })
+               Html.DropDownList("Ward", null, htmlAttributes: new { @class = "form-control" })
+               Html.DropDownList("Ward_ID", new SelectList(ViewBag.ward, "ID", "WardName"), htmlAttributes: new { @class = "form-control" })
+                Html.ValidationMessageFor(model => model.Ward_ID, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <lable> @Html.LabelFor(model => model.District_ID, "District_ID", htmlAttributes: new { @class = "control-label col-md-2" }) </lable>

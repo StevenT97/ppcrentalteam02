@@ -11,10 +11,10 @@ namespace Models.FrameWork
 {
     using System;
     using System.Collections.Generic;
-    
+    [Serializable]
     public partial class Credential
     {
         public string UserGroupID { get; set; }
-        public byte[] RoleID { get; set; }
+        public string RoleID { get; set; }
     }
 }

@@ -9,20 +9,25 @@ using TEDU_MVC.Code;
 
 namespace TEDU_MVC.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    [HasCredential(RoleID = "VIEW_USER")]
+    public class UserController : BaseController
     {
         // GET: Admin/User
-
-        public ActionResult Index()
+        DemoPPCRentalEntities db = new DemoPPCRentalEntities();
+        public ActionResult Index(int page = 1, int pageSize = 5)
         {
-            return View();
+
+            var propertymodel = new AccountModel();
+            var model = propertymodel.ListAllPagingUser(page, pageSize);
+            return View(model);
         }
-        
+        [HasCredential(RoleID = "ADD_USER")]
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [HasCredential(RoleID = "ADD_USER")]
         public ActionResult Create(USER user)
         {
 

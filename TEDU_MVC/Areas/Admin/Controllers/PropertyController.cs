@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Models;
 using Models.FrameWork;
 using System.IO;
+using TEDU_MVC.Code;
 
 namespace TEDU_MVC.Areas.Admin.Controllers
 {
@@ -15,6 +16,7 @@ namespace TEDU_MVC.Areas.Admin.Controllers
         // GET: Admin/Property
         List<SelectListItem> propertytype;
         DemoPPCRentalEntities model = new DemoPPCRentalEntities();
+        [HasCredential(RoleID = "VIEW_PROPERTY")]
         public ActionResult Index(int page = 1, int pageSize = 5)
         {
             var propertymodel = new AccountModel();
@@ -23,6 +25,13 @@ namespace TEDU_MVC.Areas.Admin.Controllers
 
 
         }
+        public ActionResult ViewListProperty(int id)
+        {
+            var pro = model.PROPERTies.Where(x => x.UserID == id).ToList();
+            return View(pro);
+        }
+
+       
         [HttpPost]
 
         public ActionResult Upload(List<HttpPostedFileBase> files)
