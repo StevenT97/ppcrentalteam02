@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Models;
 using Models.FrameWork;
 using System.IO;
+using TEDU_MVC.Code;
 
 namespace TEDU_MVC.Areas.Admin.Controllers
 {
@@ -15,6 +16,7 @@ namespace TEDU_MVC.Areas.Admin.Controllers
         // GET: Admin/Property
         List<SelectListItem> propertytype;
         DemoPPCRentalEntities model = new DemoPPCRentalEntities();
+        [HasCredential(RoleID = "VIEW_PROPERTY")]
         public ActionResult Index(int page = 1, int pageSize = 5)
         {
             var propertymodel = new AccountModel();
@@ -23,6 +25,13 @@ namespace TEDU_MVC.Areas.Admin.Controllers
 
 
         }
+        public ActionResult ViewListProperty(int id)
+        {
+            var pro = model.PROPERTies.Where(x => x.UserID == id).ToList();
+            return View(pro);
+        }
+
+
         [HttpPost]
 
         public ActionResult Upload(List<HttpPostedFileBase> files)
@@ -72,7 +81,7 @@ namespace TEDU_MVC.Areas.Admin.Controllers
         public ActionResult Create(PROPERTy property, List<HttpPostedFileBase> files)
         {
             ListAll();
-          
+
             try
             {
 
@@ -184,12 +193,48 @@ namespace TEDU_MVC.Areas.Admin.Controllers
 
         // POST: Admin/Property/Edit/5
         [HttpPost]
-        public ActionResult Edit(PROPERTy property)
+        public ActionResult Edit(PROPERTy property, List<HttpPostedFileBase> files)
         {
             ListAll();
             // Images
             try
             {
+                ViewBag.Images = Directory.EnumerateFiles(Server.MapPath("~/MultiImages"))
+                   .Select(fn => "~/MultiImages/" + Path.GetFileName(fn));
+                foreach (var image in (IEnumerable<string>)ViewBag.Images)
+                {
+
+                    if (image.Contains(property.ID.ToString()))
+                    {
+                        System.IO.File.Delete(image);
+
+                    }
+
+                }
+                // Xu ly MultiImage
+                var path = "";
+                foreach (var item in files)
+                {
+                    if (item != null)
+                    {
+                        if (item.ContentLength > 0)
+                        {
+                            if (Path.GetExtension(item.FileName).ToLower() == ".jpg"
+                                || Path.GetExtension(item.FileName).ToLower() == ".png"
+                                || Path.GetExtension(item.FileName).ToLower() == ".gif"
+                                || Path.GetExtension(item.FileName).ToLower() == ".jpeg")
+                            {
+                                var path0 = property.ID + item.FileName;
+                                path = Path.Combine(Server.MapPath("~/MultiImages"), path0);
+
+                                item.SaveAs(path);
+                                ViewBag.UploadSuccess = true;
+
+                            }
+                        }
+                    }
+                }
+
                 //// Xu ly Avatar
 
                 string filename2 = Path.GetFileNameWithoutExtension(property.ImageFile2.FileName);
