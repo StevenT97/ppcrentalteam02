@@ -27,6 +27,29 @@
         <AssociationConnector Association="Model.FK_PROJECT_TABLE_STREET_TABLE" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_PROJECT_TABLE_USER_TABLE" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_PROJECT_TABLE_WARD_TABLE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Credential" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.DISTRICT_Table" Width="1.5" PointX="10.375" PointY="6.625" />
+        <EntityTypeShape EntityType="Model.FEATURE" Width="1.5" PointX="14.875" PointY="4.625" />
+        <EntityTypeShape EntityType="Model.PROJECT_STATUS" Width="1.5" PointX="12.625" PointY="8.375" />
+        <EntityTypeShape EntityType="Model.PROPERTy" Width="1.5" PointX="14.875" PointY="8.125" />
+        <EntityTypeShape EntityType="Model.PROPERTY_FEATURE" Width="1.5" PointX="17.125" PointY="10.5" />
+        <EntityTypeShape EntityType="Model.PROPERTY_TYPE" Width="1.5" PointX="12.625" PointY="11" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.STREET" Width="1.5" PointX="12.625" PointY="5.25" />
+        <EntityTypeShape EntityType="Model.USER" Width="1.5" PointX="12.625" PointY="18.75" />
+        <EntityTypeShape EntityType="Model.UserGroup" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.WARD" Width="1.5" PointX="12.625" PointY="15.625" />
+        <AssociationConnector Association="Model.FK_PROPERTY_DISTRICT" />
+        <AssociationConnector Association="Model.FK_STREET_DISTRICT" />
+        <AssociationConnector Association="Model.FK_WARD_DISTRICT" />
+        <AssociationConnector Association="Model.FK_PROPERTY_FEATURE_FEATURE" />
+        <AssociationConnector Association="Model.FK_PROPERTY_PROJECT_STATUS" />
+        <AssociationConnector Association="Model.FK_PROPERTY_FEATURE_PROPERTY" />
+        <AssociationConnector Association="Model.FK_PROPERTY_PROPERTY_TYPE" />
+        <AssociationConnector Association="Model.FK_PROPERTY_STREET1" />
+        <AssociationConnector Association="Model.FK_PROPERTY_USER" />
+        <AssociationConnector Association="Model.FK_PROPERTY_USER1" />
+        <AssociationConnector Association="Model.FK_PROPERTY_WARD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

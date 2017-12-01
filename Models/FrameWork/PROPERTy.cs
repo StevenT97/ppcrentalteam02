@@ -55,5 +55,6 @@ namespace Models.FrameWork
         public virtual WARD WARD { get; set; }
         public HttpPostedFileBase ImageFile { get; set; }
         public HttpPostedFileBase ImageFile2 { get; set; }
+
     }
 }
